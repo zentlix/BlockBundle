@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<container xmlns="http://symfony.com/schema/dic/services"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services
+        http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <services>
+        <defaults public="false"/>
+
+        <!-- Command bus -->
+        <service id="zentlix_block.block.create_handler" class="Zentlix\BlockBundle\Application\Command\Block\CreateHandler">
+            <argument type="service" id="doctrine.orm.entity_manager"/>
+            <argument type="service" id="event_dispatcher"/>
+            <argument type="service" id="zentlix_block.unique_code_specification"/>
+            <tag name="messenger.message_handler"/>
+        </service>
+        <service id="zentlix_block.block.delete_handler" class="Zentlix\BlockBundle\Application\Command\Block\DeleteHandler">
+            <argument type="service" id="doctrine.orm.entity_manager"/>
+            <argument type="service" id="event_dispatcher"/>
+            <tag name="messenger.message_handler"/>
+        </service>
+        <service id="zentlix_block.block.update_handler" class="Zentlix\BlockBundle\Application\Command\Block\UpdateHandler">
+            <argument type="service" id="doctrine.orm.entity_manager"/>
+            <argument type="service" id="event_dispatcher"/>
+            <argument type="service" id="zentlix_block.unique_code_specification"/>
+            <tag name="messenger.message_handler"/>
+        </service>
+
+
+        <!-- Query bus -->
+        <service id="zentlix_block.block_data_table_query_handler" class="Zentlix\BlockBundle\Application\Query\Block\DataTableQueryHandler">
+            <argument type="service" id="zentlix_main.data_table_service"/>
+            <tag name="messenger.message_handler"/>
+        </service>
+    </services>
+</container>

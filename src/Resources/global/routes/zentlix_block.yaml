@@ -1,0 +1,2 @@
+zentlix_block:
+  resource: '@BlockBundle/Resources/config/routing.xml'
