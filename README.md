@@ -26,6 +26,6 @@ This bundle is part of Zentlix CMS. Currently in development, please do not use 
 
 - Создать текстовый блок в административной панели, скопировать "Символьный код".
 - В шаблоне сайта разместить виджет:
-```php
+```twig
     {{ blockWidget('symbol_code') }}
 ```

@@ -2,7 +2,7 @@ doctrine:
   orm:
     auto_mapping: true
     mappings:
-      TextBlock:
+      zentlix_block_text_block:
         is_bundle: false
         type: annotation
         dir: '%kernel.project_dir%/vendor/zentlix/block-bundle/src/Domain/Block/Entity'
