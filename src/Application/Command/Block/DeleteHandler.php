@@ -14,7 +14,7 @@ namespace Zentlix\BlockBundle\Application\Command\Block;
 
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
-use Zentlix\MainBundle\Application\Command\CommandHandlerInterface;
+use Zentlix\MainBundle\Infrastructure\Share\Bus\CommandHandlerInterface;
 use Zentlix\MainBundle\Domain\Cache\Service\Cache;
 use Zentlix\BlockBundle\Domain\Block\Event\AfterDelete;
 use Zentlix\BlockBundle\Domain\Block\Event\BeforeDelete;

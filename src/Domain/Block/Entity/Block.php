@@ -117,11 +117,11 @@ class Block implements Eventable
      */
     private function setValuesFromCommands($command): void
     {
-        $this->title = $command->title;
-        $this->code = $command->code;
+        $this->title       = $command->title;
+        $this->code        = $command->code;
         $this->description = $command->description;
-        $this->content = $command->content;
+        $this->content     = $command->content;
         $this->cache_group = $command->cache_group;
-        $this->type = $command->type;
+        $this->type        = $command->type;
     }
 }

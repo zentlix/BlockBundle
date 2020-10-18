@@ -26,7 +26,6 @@
             <tag name="messenger.message_handler"/>
         </service>
 
-
         <!-- Query bus -->
         <service id="zentlix_block.block_data_table_query_handler" class="Zentlix\BlockBundle\Application\Query\Block\DataTableQueryHandler">
             <argument type="service" id="zentlix_main.data_table_service"/>

@@ -14,8 +14,8 @@ namespace Zentlix\BlockBundle\Application\Command\Block;
 
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
-use Zentlix\MainBundle\Application\Command\CommandHandlerInterface;
 use Zentlix\MainBundle\Domain\Cache\Service\Cache;
+use Zentlix\MainBundle\Infrastructure\Share\Bus\CommandHandlerInterface;
 use Zentlix\BlockBundle\Domain\Block\Event\BeforeCreate;
 use Zentlix\BlockBundle\Domain\Block\Event\AfterCreate;
 use Zentlix\BlockBundle\Domain\Block\Entity\Block;

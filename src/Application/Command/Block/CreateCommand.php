@@ -12,20 +12,6 @@ declare(strict_types=1);
 
 namespace Zentlix\BlockBundle\Application\Command\Block;
 
-use Symfony\Component\HttpFoundation\Request;
-use Zentlix\MainBundle\Application\Command\CreateCommandInterface;
+use Zentlix\MainBundle\Infrastructure\Share\Bus\CreateCommandInterface;
 
-class CreateCommand extends Command implements CreateCommandInterface
-{
-    public function __construct(Request $request = null)
-    {
-        if($request) {
-            $this->title = $request->request->get('title');
-            $this->code = $request->request->get('code');
-            $this->description = $request->request->get('description');
-            $this->content = $request->request->get('content');
-            $this->cache_group = (string) $request->request->get('cache_group', 'default');
-            $this->type = (string) $request->request->get('type', 'html');
-        }
-    }
-}
+class CreateCommand extends Command implements CreateCommandInterface {}

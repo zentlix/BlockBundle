@@ -6,18 +6,14 @@
 
     <route id="admin.block.list" path="/backend/blocks/list">
         <default key="_controller">zentlix_block.controller.admin.block_controller::index</default>
-        <condition>request.isXmlHttpRequest()</condition>
     </route>
     <route id="admin.block.create" path="/backend/blocks/create">
         <default key="_controller">zentlix_block.controller.admin.block_controller::create</default>
-        <condition>request.isXmlHttpRequest()</condition>
     </route>
     <route id="admin.block.update" path="/backend/blocks/{id}/edit">
         <default key="_controller">zentlix_block.controller.admin.block_controller::update</default>
-        <condition>request.isXmlHttpRequest()</condition>
     </route>
     <route id="admin.block.delete" path="/backend/blocks/{id}/delete">
         <default key="_controller">zentlix_block.controller.admin.block_controller::delete</default>
-        <condition>request.isXmlHttpRequest()</condition>
     </route>
 </routes>

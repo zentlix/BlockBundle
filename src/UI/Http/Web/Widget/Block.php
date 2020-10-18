@@ -35,7 +35,7 @@ class Block extends AbstractExtension
     public function getFunctions(): array
     {
         return [
-            new TwigFunction('blockWidget', [$this, 'getBlock'], ['needs_environment' => true, 'is_safe' => ['html']]),
+            new TwigFunction('block_widget', [$this, 'getBlock'], ['needs_environment' => true, 'is_safe' => ['html']]),
         ];
     }
 

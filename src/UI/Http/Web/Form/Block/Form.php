@@ -14,7 +14,6 @@ namespace Zentlix\BlockBundle\UI\Http\Web\Form\Block;
 
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
-use Symfony\Contracts\Translation\TranslatorInterface;
 use Zentlix\MainBundle\UI\Http\Web\FormType\AbstractForm;
 use Zentlix\MainBundle\UI\Http\Web\Type;
 use Zentlix\BlockBundle\Application\Command\Block\Command;
@@ -23,12 +22,10 @@ use Zentlix\BlockBundle\Domain\Block\Entity\Block;
 class Form extends AbstractForm
 {
     protected EventDispatcherInterface $eventDispatcher;
-    protected TranslatorInterface $translator;
 
-    public function __construct(EventDispatcherInterface $eventDispatcher, TranslatorInterface $translator)
+    public function __construct(EventDispatcherInterface $eventDispatcher)
     {
         $this->eventDispatcher = $eventDispatcher;
-        $this->translator = $translator;
     }
 
     public function buildForm(FormBuilderInterface $builder, array $options): void
@@ -37,9 +34,6 @@ class Form extends AbstractForm
         $textBlock = $builder->getData();
 
         $builder
-            ->add('info', Type\NoticeType::class, [
-                'data' => 'zentlix_block.info'
-            ])
             ->add('title', Type\TextType::class, [
                 'label' => 'zentlix_main.title'
             ])
@@ -53,7 +47,9 @@ class Form extends AbstractForm
                     'zentlix_block.source_code' => 'raw',
                 ],
                 'label'  => 'zentlix_main.type',
-                'update' => true
+                'attr'   => [
+                    'class' => 'block-type'
+                ]
             ])
             ->add('description', Type\TextareaType::class, [
                 'label'    => 'zentlix_main.description',
@@ -65,8 +61,10 @@ class Form extends AbstractForm
                 'required' => false
             ])
             ->add('content', $textBlock->type === Block::HTML_TYPE ? Type\EditorType::class : Type\TextareaType::class, [
-                'label'    => 'zentlix_main.content',
-                'required' => false
+                'label' => 'zentlix_main.content',
+                'attr'  => [
+                    'class' => 'block-cke-editor'
+                ]
             ]);
     }
 }

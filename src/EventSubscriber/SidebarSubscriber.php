@@ -15,6 +15,7 @@ namespace Zentlix\BlockBundle\EventSubscriber;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Zentlix\MainBundle\Domain\AdminSidebar\Event\BeforeBuild;
 use Zentlix\MainBundle\Domain\AdminSidebar\Service\MenuItemInterface;
+use function is_null;
 
 class SidebarSubscriber implements EventSubscriberInterface
 {
@@ -36,7 +37,7 @@ class SidebarSubscriber implements EventSubscriberInterface
         $sidebar
             ->addMenuItem('zentlix_block.text_blocks')
             ->generateUrl('admin.block.list')
-            ->icon(MenuItemInterface::ICON_DOCS)
+            ->icon(MenuItemInterface::ICON_LIBRARY_ADD)
             ->sort(200);
     }
 }

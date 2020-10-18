@@ -5,17 +5,14 @@
     <services>
         <service id="zentlix_block.block.create_form" class="Zentlix\BlockBundle\UI\Http\Web\Form\Block\CreateForm">
             <argument type="service" id="event_dispatcher"/>
-            <argument type="service" id="translator"/>
             <tag name="form.type"/>
         </service>
         <service id="zentlix_block.block.update_form" class="Zentlix\BlockBundle\UI\Http\Web\Form\Block\UpdateForm">
             <argument type="service" id="event_dispatcher"/>
-            <argument type="service" id="translator"/>
             <tag name="form.type"/>
         </service>
         <service id="zentlix_block.block.visual_edit_form" class="Zentlix\BlockBundle\UI\Http\Web\Form\Block\VisualEditForm">
             <argument type="service" id="event_dispatcher"/>
-            <argument type="service" id="translator"/>
             <tag name="form.type"/>
         </service>
     </services>

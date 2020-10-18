@@ -12,9 +12,8 @@ declare(strict_types=1);
 
 namespace Zentlix\BlockBundle\Application\Command\Block;
 
-use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Validator\Constraints;
-use Zentlix\MainBundle\Application\Command\UpdateCommandInterface;
+use Zentlix\MainBundle\Infrastructure\Share\Bus\UpdateCommandInterface;
 use Zentlix\BlockBundle\Domain\Block\Entity\Block;
 
 class UpdateCommand extends Command implements UpdateCommandInterface
@@ -22,27 +21,16 @@ class UpdateCommand extends Command implements UpdateCommandInterface
     /** @Constraints\NotBlank() */
     public ?string $code;
 
-    public function __construct(Block $block, Request $request = null)
+    public function __construct(Block $block)
     {
         $this->entity = $block;
 
-        $this->title = isset($request) ?
-            $request->request->get('title', $block->getTitle()) : $block->getTitle();
-        $this->code = isset($request) ?
-            $request->request->get('code', $block->getCode()) : $block->getCode();
-        $this->description = isset($request) ?
-            $request->request->get('description', $block->getDescription()) : $block->getDescription();
-        $this->content = isset($request) ?
-            $request->request->get('content', $block->getContent()) : $block->getContent();
-        $this->type = isset($request) ?
-            (string) $request->request->get('type', $block->getType()) : $block->getType();
-        $this->cache_group = isset($request) ?
-            (string) $request->request->get('cache_group', $block->getCacheGroup()) : $block->getCacheGroup();
-    }
-
-    public function getEntity(): Block
-    {
-        return $this->entity;
+        $this->title       = $block->getTitle();
+        $this->code        = $block->getCode();
+        $this->description = $block->getDescription();
+        $this->content     = $block->getContent();
+        $this->type        = $block->getType();
+        $this->cache_group = $block->getCacheGroup();
     }
 
     public function update(string $content = null): void

@@ -13,7 +13,6 @@ declare(strict_types=1);
 namespace Zentlix\BlockBundle\UI\Http\Web\Controller\Admin;
 
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\HttpFoundation\Request;
 use Zentlix\MainBundle\UI\Http\Web\Controller\Admin\ResourceController;
 use Zentlix\BlockBundle\Application\Command\Block\CreateCommand;
 use Zentlix\BlockBundle\Application\Command\Block\UpdateCommand;
@@ -31,19 +30,21 @@ class BlockController extends ResourceController
     public static $deleteSuccessMessage = 'zentlix_block.delete.success';
     public static $redirectAfterAction  = 'admin.block.list';
 
-    public function index(Request $request): Response
+    public function index(): Response
     {
-        return $this->listResource(new DataTableQuery(Table::class), $request);
+        return $this->listResource(new DataTableQuery(Table::class),'@BlockBundle/admin/blocks/blocks.html.twig');
     }
 
-    public function create(Request $request): Response
+    public function create(): Response
     {
-        return $this->createResource(new CreateCommand($request), CreateForm::class, $request);
+        return $this->createResource(new CreateCommand(), CreateForm::class, '@BlockBundle/admin/blocks/create.html.twig');
     }
 
-    public function update(Block $block, Request $request): Response
+    public function update(Block $block): Response
     {
-        return $this->updateResource(new UpdateCommand($block), UpdateForm::class, $request);
+        return $this->updateResource(
+            new UpdateCommand($block), UpdateForm::class, '@BlockBundle/admin/blocks/update.html.twig', ['block' => $block]
+        );
     }
 
     public function delete(Block $block): Response

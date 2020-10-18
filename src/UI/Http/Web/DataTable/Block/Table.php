@@ -12,9 +12,10 @@ declare(strict_types=1);
 
 namespace Zentlix\BlockBundle\UI\Http\Web\DataTable\Block;
 
+use Omines\DataTablesBundle\Column\TwigColumn;
 use Omines\DataTablesBundle\DataTable;
 use Omines\DataTablesBundle\Adapter\Doctrine\ORMAdapter;
-use Zentlix\MainBundle\Domain\DataTable\Column\TextColumn;
+use Omines\DataTablesBundle\Column\TextColumn;
 use Zentlix\MainBundle\Infrastructure\Share\DataTable\AbstractDataTableType;
 use Zentlix\BlockBundle\Domain\Block\Event\Table as TableEvent;
 use Zentlix\BlockBundle\Domain\Block\Entity\Block;
@@ -23,18 +24,15 @@ class Table extends AbstractDataTableType
 {
     public function configure(DataTable $dataTable, array $options)
     {
-        $dataTable->setName($this->router->generate('admin.block.list'));
-        $dataTable->setTitle('zentlix_block.text_blocks');
-        $dataTable->setCreateBtnLabel('zentlix_block.create.action');
+        $dataTable->setName('blocks-datatable');
 
         $dataTable
             ->add('id', TextColumn::class, ['label' => 'zentlix_main.id', 'visible' => true])
-            ->add('title', TextColumn::class,
+            ->add('title', TwigColumn::class,
                 [
-                    'render'  => fn($value, Block $context) =>
-                        sprintf('<a href="%s">%s</a>', $this->router->generate('admin.block.update', ['id' => $context->getId()]), $value),
-                    'visible' => true,
-                    'label'   => 'zentlix_main.title'
+                    'template'  => '@BlockBundle/admin/blocks/datatable/title.html.twig',
+                    'visible'   => true,
+                    'label'     => 'zentlix_main.title'
                 ])
 
             ->add('code', TextColumn::class, [

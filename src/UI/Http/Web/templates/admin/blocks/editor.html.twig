@@ -1,0 +1,27 @@
+<script>
+    $(document).ready(function () {
+        $('body').on('change', '.block-type', function () {
+            if($(this).val() === 'html') {
+                createBlockEditor();
+            } else {
+                editor.destroy();
+            }
+        });
+        if($('.block-cke-editor').length > 0) {
+            createBlockEditor();
+        }
+        function createBlockEditor() {
+            editor = ClassicEditor.create(document.querySelector('.block-cke-editor'), {
+                language: 'ru',
+                simpleUpload: {
+                    uploadUrl: '/backend/file/upload',
+                    headers: {
+                        'X-Requested-With': 'XMLHttpRequest'
+                    }
+                },
+            }).then(function (e) {
+                editor = e;
+            });
+        }
+    });
+</script>

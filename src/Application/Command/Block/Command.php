@@ -13,9 +13,9 @@ declare(strict_types=1);
 namespace Zentlix\BlockBundle\Application\Command\Block;
 
 use Symfony\Component\Validator\Constraints;
-use Zentlix\MainBundle\Application\Command\DynamicPropertyCommand;
-use Zentlix\MainBundle\Application\Command\VisualEditorCommandInterface;
 use Zentlix\MainBundle\Infrastructure\Share\Bus\CommandInterface;
+use Zentlix\MainBundle\Infrastructure\Share\Bus\DynamicPropertyCommand;
+use Zentlix\MainBundle\Infrastructure\Share\Bus\VisualEditorCommandInterface;
 use Zentlix\BlockBundle\Domain\Block\Entity\Block;
 
 class Command extends DynamicPropertyCommand implements CommandInterface, VisualEditorCommandInterface
@@ -23,9 +23,9 @@ class Command extends DynamicPropertyCommand implements CommandInterface, Visual
     /** @Constraints\NotBlank() */
     public ?string $title;
 
-    public ?string $code;
-    public ?string $description;
-    public ?string $content;
+    public ?string $code = null;
+    public ?string $description = null;
+    public ?string $content = null;
     public string $cache_group = 'default';
 
     /** @Constraints\NotBlank() */
