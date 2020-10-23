@@ -16,12 +16,16 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Zentlix\BlockBundle\Application\Command\Block\UpdateCommand;
 use Zentlix\BlockBundle\Domain\Block\Event\UpdateForm as UpdateFormEvent;
+use Zentlix\MainBundle\UI\Http\Web\Type\TextType;
 
 class UpdateForm extends Form
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         parent::buildForm($builder, $options);
+
+        $code = $builder->get('code');
+        $builder->add('code', TextType::class, array_replace($code->getOptions(), ['required' => true]));
 
         $this->eventDispatcher->dispatch(new UpdateFormEvent($builder));
     }
