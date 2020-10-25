@@ -16,7 +16,7 @@ use Omines\DataTablesBundle\Column\TwigColumn;
 use Omines\DataTablesBundle\DataTable;
 use Omines\DataTablesBundle\Adapter\Doctrine\ORMAdapter;
 use Omines\DataTablesBundle\Column\TextColumn;
-use Zentlix\MainBundle\Infrastructure\Share\DataTable\AbstractDataTableType;
+use Zentlix\MainBundle\Infrastructure\DataTable\AbstractDataTableType;
 use Zentlix\BlockBundle\Domain\Block\Event\Table as TableEvent;
 use Zentlix\BlockBundle\Domain\Block\Entity\Block;
 
