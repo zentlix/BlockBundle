@@ -29,7 +29,7 @@ class BlockBundle extends Bundle implements ZentlixBundleInterface
 
     public function getVersion(): string
     {
-        return '1.0.1';
+        return '1.0.2';
     }
 
     public function getDeveloper(): array

@@ -9,9 +9,7 @@
         <service id="zentlix_block.controller.admin.block_controller"
                  class="Zentlix\BlockBundle\UI\Http\Web\Controller\Admin\BlockController"
                  public="true">
-            <argument type="service" id="translator"/>
-            <argument type="service" id="security.csrf.token_manager"/>
-            <argument type="service" id="zentlix_main.bundles"/>
+            <argument type="service" id="zentlix_main.bundles" />
             <argument type="service" id="zentlix_main.command_bus"/>
             <argument type="service" id="zentlix_main.query_bus"/>
             <tag name="controller.service_arguments"/>
